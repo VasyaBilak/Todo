@@ -5,6 +5,8 @@ let form = document.forms['AddTodoItem'];
 let inputText = form.elements['todoText'];
 let notificationAlert = document.querySelector('.notification-alert');
 
+
+
 function generateId(){
     let id = '';
     let words = '0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';
@@ -64,14 +66,16 @@ function addList(list){
     
 }
 
+//Clear List
+let btn = document.querySelector('.clear-btn');
 
-//let btn = document.querySelector('.clear-btn');
+function onClick(){
+    tasks.length = 0;
+    clearList();
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+};
 
-//function onClick(e){
-//    console.log(e);
-//};
-
-//btn.addEventListener("click", onClick);
+btn.addEventListener("click", onClick);
    
 //console.dir(btn);
 //console.log(deleteBtns);
