@@ -1,36 +1,36 @@
 // Init Id module
-const id = Id
+const id = Id;
 
-const Tasks = (function() {
+const Tasks = (function () {
+    
+    let tasks = [];
+    let instance;
+    
+    const getTasks = function () {
+        return tasks;
+    };
+    
+    const setTasks = function (array) {
+        tasks = array;
+        return tasks;
+    };
+    
+    const addTask = async function (task) {
+        task.id = id.generate();
+        await tasks.unshift(task);
+        return task;
+    };
 
-    let tasks = [],
-        instance
+    const removeTask = async function (id) {
+        tasks = await tasks.filter(task => task.id !== id);
+        return tasks;
+    };
 
-    const getTasks = () => {
-        return tasks
-    }
+    const removeAll = async function () {
+        tasks = [];
+    };
 
-    const setTasks = array => {
-        tasks = array
-        return tasks
-    }
-
-    const addTask = async task => {
-        task.id = id.generate()
-        await tasks.unshift(task)
-        return task
-    }
-
-    const removeTask = async id => {
-        tasks = await tasks.filter(task => task.id !== id)
-        return tasks
-    }
-
-    const removeAll = async () => {
-        tasks = []
-    }
-
-    const createInstance = () => {
+    const createInstance = function () {
         return {
             getTasks,
             setTasks,
@@ -38,12 +38,12 @@ const Tasks = (function() {
             removeTask,
             removeAll
         }
-    }
+    };
 
     return {
-        getInstance: () => {
-            return instance || (instance = createInstance())
+        getInstance: function () {
+            return instance || (instance = createInstance());
         }
     }
     
-}())
+}());

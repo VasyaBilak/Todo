@@ -1,26 +1,26 @@
 class EventObserver{
     constructor() {
-        // array subscribers
-        this.observers = []
+        // массив підпищиків
+        this.observers = [];
     }
+
     // subscribe on event
     subscribe(fn) {
-        this.observers.push(fn)
+        this.observers.push(fn);
     }
 
     // unsubscribe
     unsubscribe(fn) {
         this.observers = this.observers.filter(item => {
             if (item !== fn) {
-                return item
+                return item;
             }
         })
     }
 
     fire(args) {
         this.observers.forEach(fn => {
-            fn.call(null, args)
+            fn.call(null, args);
         })
     }
 }
-
