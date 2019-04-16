@@ -33,3 +33,6 @@ img{
 .notification-alert.show{
     display: block;
 }
+.card-header span{
+     display: none;
+}
